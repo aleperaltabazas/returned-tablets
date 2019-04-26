@@ -2,24 +2,26 @@ package com.despegar.jav.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.math.BigInteger;
+
 public class TabletsDTO {
     @JsonProperty("tablets")
-    private Integer tablets;
+    private BigInteger tablets;
     private String lastDate;
 
     public TabletsDTO() {
     }
 
-    public TabletsDTO(Integer returnedTablets, String lastDate) {
+    public TabletsDTO(BigInteger returnedTablets, String lastDate) {
         this.tablets = returnedTablets;
         this.lastDate = lastDate;
     }
 
-    public Integer getTablets() {
+    public BigInteger getTablets() {
         return tablets;
     }
 
-    public void setTablets(Integer tablets) {
+    public void setTablets(BigInteger tablets) {
         this.tablets = tablets;
     }
 

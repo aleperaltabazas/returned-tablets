@@ -5,6 +5,7 @@
 	<title>
 		Devuelvan la tablilla
 	</title>
+	<link rel="icon" type="image/png" href="imgs/bicho.jpg">
 	<script>
 		var returnedTablets;
 		var lastReturnDate;
@@ -27,13 +28,12 @@
 					lastReturnDate = tablets.lastDate;
 					returnedTablets = 0;
 
-					console.log(tablets);
 					document.getElementById("returned-tablets").innerHTML = displayTablets;
 					document.getElementById("last-return-date").innerHTML = lastReturnDate;
 				});
 		}
 
-		window.onload = function () {
+		function getTablets() {
 			fetch('tablets')
 				.then(function (response) {
 					return response.json();
@@ -43,10 +43,19 @@
 					lastReturnDate = tablets.lastDate;
 					returnedTablets = 0;
 
-					console.log(tablets);
 					document.getElementById("returned-tablets").innerHTML = displayTablets;
 					document.getElementById("last-return-date").innerHTML = lastReturnDate;
 				});
+		}
+
+		window.onload = function () {
+			getTablets();
+			poll();
+		}
+
+		function poll() {
+			getTablets();
+			setTimeout(poll, 500);
 		}
 	</script>
 </head>
