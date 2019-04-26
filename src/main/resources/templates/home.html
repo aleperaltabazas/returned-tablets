@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		Devuelvan la tablilla
+	</title>
+	<script>
+		var returnedTablets;
+		var lastReturnDate;
+		var displayTablets;
+
+		function returnTablet() {
+			returnedTablets++;
+			fetch('tablets', {
+				method: 'POST',
+				body: JSON.stringify({ tablets: returnedTablets }),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+				.then(function (response) {
+					return response.json();
+				})
+				.then(function (tablets) {
+					displayTablets = tablets.tablets;
+					lastReturnDate = tablets.lastDate;
+					returnedTablets = 0;
+
+					console.log(tablets);
+					document.getElementById("returned-tablets").innerHTML = displayTablets;
+					document.getElementById("last-return-date").innerHTML = lastReturnDate;
+				});
+		}
+
+		window.onload = function () {
+			fetch('tablets')
+				.then(function (response) {
+					return response.json();
+				})
+				.then(function (tablets) {
+					displayTablets = tablets.tablets;
+					lastReturnDate = tablets.lastDate;
+					returnedTablets = 0;
+
+					console.log(tablets);
+					document.getElementById("returned-tablets").innerHTML = displayTablets;
+					document.getElementById("last-return-date").innerHTML = lastReturnDate;
+				});
+		}
+	</script>
+</head>
+
+<body>
+	<div>
+		<h1><span>Tablillas devueltas: </span><span id="returned-tablets"></span></h1>
+		<h3><span>Última tablilla de vuelta: </span><span id="last-return-date"></span></h3>
+		<button onclick="returnTablet()">Devolver la tablilla</button>
+	</div>
+</body>
+
+</html>
