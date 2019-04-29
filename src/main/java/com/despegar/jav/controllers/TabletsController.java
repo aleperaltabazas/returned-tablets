@@ -34,6 +34,9 @@ public class TabletsController {
     private Map<String, Integer> banStory = new HashMap<>();
     private Set<String> banned = new HashSet<>();
 
+    private final int baseBanDuration = 1000 * 60 * 5;
+    private final int toBanDelay = 25;
+
     @GetMapping(value = "/tablets", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public TabletsDTO returnedTablets() {
@@ -52,14 +55,28 @@ public class TabletsController {
         if (!isBanned(clientIP)) {
             clientHits++;
             hits.put(clientIP, clientHits);
+            discountHits(clientIP);
 
             tablets.returnTablets(tabletsDTO.getTablets());
-            if (clientHits % 10 == 0) {
+            if (clientHits % toBanDelay == 0) {
                 ban(clientIP);
             }
         }
 
         return responseTabletsDTO();
+    }
+
+    private void discountHits(String ip) {
+        int delay = 1000 * 60 * 30;
+        Timer timer = new Timer();
+        TimerTask delete = new TimerTask() {
+            @Override
+            public void run() {
+                hits.put(ip, hits.get(ip) - 1);
+            }
+        };
+
+        timer.schedule(delete, delay);
     }
 
     private boolean isBanned(String clientIP) {
@@ -77,9 +94,7 @@ public class TabletsController {
     }
 
     private void programUnban(String ip) {
-        int baseTimer = 1000 * 60 * 5;
         int effectiveBan;
-
         int bans = banStory.get(ip);
 
         if (bans <= 5) {
@@ -89,7 +104,7 @@ public class TabletsController {
                 public void run() {
                     unban(ip);
                 }
-            }, effectiveBan = new Double(baseTimer * Math.pow(2, bans)).intValue());
+            }, effectiveBan = new Double(baseBanDuration * Math.pow(2, bans)).intValue());
             LOGGER.info("Unbanning ip in" + effectiveBan / 60 / 1000 + " minutes");
         } else {
             LOGGER.info("Banned " + ip + " permanently");

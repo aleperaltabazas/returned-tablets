@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d07dd796-22df-42b4-976d-02795bb7678e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/tablillas.json" beforeDir="false" afterPath="$PROJECT_DIR$/tablillas.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/despegar/jav/controllers/TabletsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/despegar/jav/controllers/TabletsController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -44,10 +44,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/despegar/jav/controllers/TabletsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="85" column="38" lean-forward="true" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
+            <state relative-caret-position="466">
+              <caret line="60" column="39" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2269#2385#0" expanded="true" />
+                <element signature="e#2384#2385#0" expanded="true" />
                 <element signature="e#2622#2764#0" expanded="true" />
                 <element signature="e#2763#2764#0" expanded="true" />
               </folding>
@@ -158,8 +160,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/despegar/jav/Tablets.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/despegar/jav/dto/BanDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/despegar/jav/utils/FileManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/despegar/jav/controllers/TabletsController.java" />
         <option value="$PROJECT_DIR$/tablillas.json" />
+        <option value="$PROJECT_DIR$/src/main/java/com/despegar/jav/controllers/TabletsController.java" />
       </list>
     </option>
   </component>
@@ -474,10 +476,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/despegar/jav/controllers/TabletsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="85" column="38" lean-forward="true" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
+        <state relative-caret-position="466">
+          <caret line="60" column="39" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2269#2385#0" expanded="true" />
+            <element signature="e#2384#2385#0" expanded="true" />
             <element signature="e#2622#2764#0" expanded="true" />
             <element signature="e#2763#2764#0" expanded="true" />
           </folding>
