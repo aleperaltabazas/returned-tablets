@@ -1,11 +1,10 @@
 package com.despegar.jav.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.despegar.jav.Tablets;
 
 import java.math.BigInteger;
 
 public class TabletsDTO {
-    @JsonProperty("tablets")
     private BigInteger tablets;
     private String lastDate;
 
@@ -15,6 +14,11 @@ public class TabletsDTO {
     public TabletsDTO(BigInteger returnedTablets, String lastDate) {
         this.tablets = returnedTablets;
         this.lastDate = lastDate;
+    }
+
+    public TabletsDTO(Tablets tablets) {
+        this.tablets = tablets.getReturnedTablets();
+        this.lastDate = tablets.getLastReturned();
     }
 
     public BigInteger getTablets() {
